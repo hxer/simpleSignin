@@ -100,4 +100,4 @@ ENV/
 .mypy_cache/
 
 .idea/
-.DS_Store/
+.DS_Store
