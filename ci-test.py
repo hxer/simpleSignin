@@ -10,7 +10,8 @@ from binascii import a2b_hex
 from binascii import b2a_hex
 from lib.clipher import AESCipher
 from signin.unicomapp import UnicomApp
-from lib.conf import UNICOMAPP
+from signin.jd import JD, JDUser
+from lib.conf import UNICOMAPP, JDong
 
 
 def test_aes():
@@ -36,6 +37,13 @@ class TestSignin(unittest.TestCase):
         unicomapp = UnicomApp()
         self.assertTrue(unicomapp.login(username, password))
         self.assertTrue(unicomapp.signin())
+
+    def test_jd(self):
+        username = os.getenv('jd_username') or JDong['username']
+        password = os.getenv('jd_password') or JDong['password']
+        jd =JD(username, password)
+        jd.sign()
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -6,3 +6,8 @@ UNICOMAPP = {
     'username': '',
     'password': ''
 }
+
+JDong = {
+    'username': '',
+    'password': ''
+}

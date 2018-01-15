@@ -19,3 +19,8 @@
 ## support
 
 * unicom app(中国联通手机营业厅)
+* 京东
+
+## thanks
+
+* https://github.com/vc5/JD-Coin
