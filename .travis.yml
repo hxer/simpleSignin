@@ -1,11 +1,15 @@
+sudo: required
+dist: trusty
 language: python
-addons:
-  apt:
-    packages:
-      - google-chrome-stable
-      - udev
-      - libexif-dev
+python:
   - "3.6"
+addons:
+  chrome: stable
 install: "pip install -r requirements.txt"
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
 script:
+  - whereis google-chrome-stable
   - python3 ci-test.py
