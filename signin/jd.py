@@ -60,7 +60,7 @@ class JD:
         else:
             print('= 全部成功 ~')
         print('=================================')
-        return jobs_failed == 0
+        return len(jobs_failed) == 0
 
     def make_session(self) -> JdSession:
         chrome_path = find_chrome_driver_path()
