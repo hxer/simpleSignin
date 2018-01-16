@@ -42,7 +42,7 @@ class TestSignin(unittest.TestCase):
         username = os.getenv('jd_username') or JDong['username']
         password = os.getenv('jd_password') or JDong['password']
         jd =JD(username, password)
-        jd.sign()
+        self.assertTrue(jd.sign())
 
 
 if __name__ == "__main__":

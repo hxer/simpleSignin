@@ -14,6 +14,7 @@ from lib.settings import MOBILE_UA
 
 class JDUser:
     def __init__(self, username, password, jobs_skip=None):
+        user.headless = True
         self.logger = logger
         self.ua_pc = PC_UA
         self.ua = MOBILE_UA
@@ -59,6 +60,7 @@ class JD:
         else:
             print('= 全部成功 ~')
         print('=================================')
+        return jobs_failed == 0
 
     def make_session(self) -> JdSession:
         chrome_path = find_chrome_driver_path()
@@ -66,7 +68,8 @@ class JD:
                             browser='chrome',
                             webdriver_options=ChromeOptions())
         session.webdriver_options.add_argument('lang=zh_CN.UTF-8')
-        session.webdriver_options.add_argument('headless')
+        if self.user.headless:
+            session.webdriver_options.add_argument('headless')
         return session
 
 
