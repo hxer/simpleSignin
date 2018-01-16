@@ -14,7 +14,7 @@ from lib.settings import MOBILE_UA
 
 class JDUser:
     def __init__(self, username, password, jobs_skip=None):
-        user.headless = True
+        self.headless = True
         self.logger = logger
         self.ua_pc = PC_UA
         self.ua = MOBILE_UA
