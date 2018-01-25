@@ -87,7 +87,7 @@ class Job:
     def is_login(self):
         r = self.session.get(self.test_url, allow_redirects=False)
 
-        if r.is_redirect and 'passport' in r.headers['Location']:
+        if r.is_redirect and 'passport' in r.headers.get('Location'):
             return False
         else:
             return True
@@ -110,10 +110,10 @@ class Job:
             password_input.send_keys(self.bot.user.password)
             tap_loginbtn.tap(login_btn).perform()
             time.sleep(6)
-            nickname = driver.find_element_by_id('userName')
-            nickname = nickname.text
-            self.logger.info('{0}, 登陆成功'.format(nickname))
-            print('登陆成功')
+            if any(u in driver.current_url for u in ['://plogin', '://passport']):
+                self.logger.warning('登陆异常，请检查是否需要验证码')
+            else:
+                self.logger.info('登陆成功')
         else:
             self.login_pc(url)
         self.session.transfer_driver_cookies_to_session()
@@ -132,13 +132,10 @@ class Job:
         password_input.send_keys(self.bot.user.password)
         login_btn.click()
         time.sleep(6)
-        try:
-            nickname = driver.find_element_by_class_name('nickname')
-            nickname = nickname.text
-            self.logger.info('登陆成功，欢迎{0}'.format(nickname))
-        except NoSuchElementException:
+        if any(u in driver.current_url for u in ['://plogin', '://passport']):
             self.logger.warning('登陆异常，请检查是否需要验证码')
-        return nickname
+        else:
+            self.logger.info('登陆成功')
 
     def is_signed(self):
         '''
