@@ -122,7 +122,6 @@ class Job:
     def login_pc(self, url):
         driver = self.session.driver
         driver.get(url)
-        nickname = ''
         switcher = driver.find_element_by_link_text('账户登录')
         switcher.click()
         user_input = driver.find_element_by_id('loginname')

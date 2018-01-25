@@ -12,4 +12,4 @@ from .shopsign import ShopSign
 
 __all__ = ['jobs_all']
 
-jobs_all = [ShopSign, DakaApp, Bean, SignJR, BeanApp, DataStation]
+jobs_all = [ShopSign, DakaApp, SignJR, DataStation, BeanApp, Bean]
