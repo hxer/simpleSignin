@@ -4,7 +4,7 @@ import logging
 
 logger = logging.getLogger('AutoSignin')
 
-log_format = '%(asctime)s %(name)s %(levelname)s: %(message)s'
+log_format = '%(asctime)s %(filename)s %(funcName)s %(lineno)s %(levelname)s: %(message)s'
 logger.propagate = False
 logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()

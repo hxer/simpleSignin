@@ -137,7 +137,7 @@ class Job:
             nickname = nickname.text
             self.logger.info('登陆成功，欢迎{}'.format(nickname))
         except NoSuchElementException:
-            self.logger.warn('登陆异常，请检查是否需要验证码')
+            self.logger.warning('登陆异常，请检查是否需要验证码')
         return nickname
 
     def is_signed(self):

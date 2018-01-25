@@ -31,7 +31,7 @@ class MobileChrome:
                 options.add_argument('--headless')
             options.add_argument('lang=zh_CN.UTF-8')
             options.add_argument('user-agent={0}'.format(self.UA))
-            self.driver = webdriver.Chrome(chrome_options=options)
+            self.driver = webdriver.Chrome(options=options)
         except WebDriverException as e:
             self.logger.warn(e)
         self.driver.set_window_size(width=self.WIDTH, height=self.HEIGHT)
@@ -54,9 +54,9 @@ class MobileChrome:
         if self.user.password != '':
             login_btn.click()
             time.sleep(6)
-            nickname = self.driver.find_element_by_css_selector('#myHeader span[class$="name_text"]')
+            nickname = self.driver.find_element_by_id('userName')
             self.nickname = nickname.text
-            self.logger.info('登陆成功，欢迎{}'.format(self.nickname))
+            self.logger.info('{0}, 登陆成功'.format(self.nickname))
         else:
             input('请输入账户密码')
         self.save_cookies()
@@ -119,9 +119,9 @@ class PcChrome(MobileChrome):
             login_btn.click()
             time.sleep(6)
             try:
-                nickname = self.driver.find_element_by_css_selector('#shortcut-2014 a[class=nickname]')
+                nickname = self.driver.find_element_by_class_name('nickname')
                 self.nickname = nickname.text
-                self.logger.info('登陆成功，欢迎{}'.format(self.nickname))
+                self.logger.info('登陆成功，欢迎{0}'.format(self.nickname))
             except NoSuchElementException:
                 self.logger.warn('登陆异常，请检查是否需要验证码')
         else:
