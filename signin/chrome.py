@@ -163,5 +163,5 @@ class JdSession(Session):
     def _start_chrome_browser(self):
         # Create driver process
         return RequestiumChrome(self.webdriver_path,
-                                chrome_options=self.webdriver_options,
+                                options=self.webdriver_options,
                                 default_timeout=self.default_timeout)

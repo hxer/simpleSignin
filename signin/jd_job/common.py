@@ -110,9 +110,9 @@ class Job:
             password_input.send_keys(self.bot.user.password)
             tap_loginbtn.tap(login_btn).perform()
             time.sleep(6)
-            nickname = driver.find_element_by_css_selector('#myHeader span[class$="name_text"]')
+            nickname = driver.find_element_by_id('userName')
             nickname = nickname.text
-            self.logger.info('登陆成功，欢迎{}'.format(nickname))
+            self.logger.info('{0}, 登陆成功'.format(nickname))
             print('登陆成功')
         else:
             self.login_pc(url)
@@ -133,9 +133,9 @@ class Job:
         login_btn.click()
         time.sleep(6)
         try:
-            nickname = driver.find_element_by_css_selector('#shortcut-2014 a[class=nickname]')
+            nickname = driver.find_element_by_class_name('nickname')
             nickname = nickname.text
-            self.logger.info('登陆成功，欢迎{}'.format(nickname))
+            self.logger.info('登陆成功，欢迎{0}'.format(nickname))
         except NoSuchElementException:
             self.logger.warning('登陆异常，请检查是否需要验证码')
         return nickname
