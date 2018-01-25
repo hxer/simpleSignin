@@ -31,13 +31,6 @@ def test_aes():
 
 
 class TestSignin(unittest.TestCase):
-    def test_unicomapp(self):
-        username = os.getenv('unicomapp_username') or UNICOMAPP['username']
-        password = os.getenv('unicomapp_password') or UNICOMAPP['password']
-        unicomapp = UnicomApp()
-        self.assertTrue(unicomapp.login(username, password))
-        self.assertTrue(unicomapp.signin())
-
     def test_jd(self):
         username = os.getenv('jd_username') or JDong['username']
         password = os.getenv('jd_password') or JDong['password']
