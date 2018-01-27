@@ -20,6 +20,10 @@ class RequestError(Exception):
         self.response = response
 
 
+class LoginException(Exception):
+    pass
+
+
 def find_value(pattern, string, default=None, flags=0):
     """
     根据正则表达式在字符串中搜索值，若未找到，返回 default
@@ -112,12 +116,14 @@ class Job:
             time.sleep(6)
             if any(u in driver.current_url for u in ['://plogin', '://passport']):
                 self.logger.warning('登陆异常，请检查是否需要验证码')
+                self.session.driver.close()
+                raise LoginException
             else:
                 self.logger.info('登陆成功')
         else:
             self.login_pc(url)
-        self.session.transfer_driver_cookies_to_session()
-        self.session.driver.close()
+            self.session.transfer_driver_cookies_to_session()
+            self.session.driver.close()
 
     def login_pc(self, url):
         driver = self.session.driver
@@ -133,6 +139,7 @@ class Job:
         time.sleep(6)
         if any(u in driver.current_url for u in ['://plogin', '://passport']):
             self.logger.warning('登陆异常，请检查是否需要验证码')
+            raise LoginException
         else:
             self.logger.info('登陆成功')
 
