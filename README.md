@@ -1,6 +1,6 @@
 ## simple sign in
 
-[![Build Status](https://travis-ci.org/hxer/simpleSignin.svg?branch=master)](https://travis-ci.org/hxer/simpleSignin)
+[![Build Status](https://travis-ci.org/hxer/simpleSignin.svg?branch=unicomapp)](https://travis-ci.org/hxer/simpleSignin)
 
 简单的自动签到，通常用于可以根据用户名和密码就可以进行登录和签到的场景，便于自动化，涉及js加载校验和验证码识别的，可另寻其他方法。
 
