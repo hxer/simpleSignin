@@ -61,12 +61,12 @@ class UnicomApp(Base):
     def signin(self):
         # login, then get token
         token = self.session.cookies.get('a_token', '')
-        query_url = 'http://m.client.10010.com/SigninApp/signin/querySigninActivity.htm'
+        query_url = 'https://act.10010.com/SigninApp/signin/querySigninActivity.htm'
         params = {
             'token': token
         }
         self.session.get(query_url, params=params, headers=self.headers, proxies=PROXIES)
-        signin_url = 'http://m.client.10010.com/SigninApp/signin/daySign.do'
+        signin_url = 'https://act.10010.com/SigninApp/signin/daySign.do'
         data = {
             'className': 'btnPouplePost'
         }
